@@ -1,0 +1,32 @@
+<div class="table-wrapper"> 
+	<table class="table table-bordered all-employees">
+       <thead>
+	       	<tr>
+		     	<th>Должность</th>
+		        <th>ФИО</th>
+		        <th>План по прибыли*</th>
+		        <th>факт по прибыли</th>
+		        <th>% бонуса по прибыли*</th>
+		        <th class="txt-bonus">Бонус</th>            
+		        <th>% выполнения плана</th>              
+		        <th>Корректировка</th>
+		        <th>Итого</th>
+		        <th></th>
+	        </tr>
+       </thead>
+       <tbody>
+	       	<tr ng-repeat="item in data">
+		        <td class="txt-left">{{ item.user.position }}</td>
+		        <td class="txt-left">{{ item.user.name }}</td>
+		        <td>{{ item.stats.metrics.revenue_new.plan}}</td>
+		        <td>{{ item.stats.metrics.revenue_new.fact}}</td>
+		        <td>2,00%</td>
+		        <td class="txt-bonus">1.842</td>
+		        <td>{{item.stats.metrics.revenue_new.plan_percent}}%</td>
+		        <td>1473.5</td>
+		        <td></td>   
+		        <td><a  ui-sref="user({id: item.user.id})">подробнее</a></td>           
+	        </tr> 
+       </tbody>
+    </table>         
+</div>

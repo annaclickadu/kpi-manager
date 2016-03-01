@@ -1,0 +1,440 @@
+<div class="data-department" ng-controller="ModalDemoCtrl">
+  <h2>Настройки</h2>
+  <div class="table-wrapper">
+
+    <!-- Nav tabs -->
+    <uib-tabset active="activeJustified" justified="true">
+      <uib-tab index="0" heading="CPA">
+        <h4>Процентная ставка:</h4> 
+        <div class="row step-bottom">
+          <div class="col-md-4" ng-controller="validateCtrl">
+            <form name="teamleadCpaForm" ng-submit="submitForm()" novalidate>
+              <div class="table-rate clearfix">
+                <table class="table">
+                  <thead>
+                    <tr><th colspan="2">Тимлид</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="txt-left">Оборот</td>
+                      <td ng-class="{ 'has-error' : teamleadCpaForm.revenue.$invalid && !teamleadCpaForm.revenue.$pristine }">
+                        <input type="text" name="revenue" ng-model="teamlead.revenue" pattern="\d+(\.\d{0,3})?"  value="" ng-required="true"/>                       
+                        <span class="help-block" ng-show="teamleadCpaForm.revenue.$error.pattern">Not a valid number!</span>
+                        <span class="help-block" ng-show="teamleadCpaForm.revenue.$error.required"></span>                      
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left">Прибыль</td>
+                      <td ng-class="{ 'has-error' : teamleadCpaForm.profit.$invalid && !teamleadCpaForm.profit.$pristine }">
+                        <input type="text" name="profit" ng-model="teamlead.profit" ng-required="true" value="" pattern="\d+(\.\d{0,3})?" />
+                        <span class="help-block" ng-show="teamleadCpaForm.profit.$error.pattern">Not a valid number!</span>
+                        <span class="help-block" ng-show="teamleadCpaForm.profit.$error.required"></span> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left"><input type="checkbox" name="" > выполнение ДИ отделом</td>
+                      <td ng-class="{ 'has-error' : teamleadCpaForm.di.$invalid && !teamleadCpaForm.di.$pristine }">
+                        <input name="di" id="" type="text" ng-model="teamlead.di" ng-required="true" value="" pattern="\-?\d+(\.\d{0,3})?">
+                        <span class="help-block" ng-show="teamleadCpaForm.di.$error.pattern">Not a valid number!</span>
+                        <span class="help-block" ng-show="teamleadCpaForm.di.$error.required"></span> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left">ДЗ отдела <br>(если более 3% от оборота)</td>
+                      <td ng-class="{ 'has-error' : teamleadCpaForm.dz.$invalid && !teamleadCpaForm.dz.$pristine }">
+                        <input name="dz" id="" type="text" ng-model="teamlead.dz" ng-required="true" value="" pattern="\d+(\.\d{0,3})?">
+                        <span class="help-block" ng-show="teamleadCpaForm.dz.$error.pattern">Not a valid number!</span>
+                        <span class="help-block" ng-show="teamleadCpaForm.dz.$error.required"></span> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left">перевыполнение отделом плана</td>
+                      <td ng-class="{ 'has-error' : teamleadCpaForm.over.$invalid && !teamleadCpaForm.over.$pristine }">
+                        <input name="over" id="" type="text" ng-model="teamlead.over" ng-required="true" value="" pattern="\d+(\.\d{0,3})?">
+                        <span class="help-block" ng-show="teamleadCpaForm.over.$error.pattern">Not a valid number!</span>
+                        <span class="help-block" ng-show="teamleadCpaForm.over.$error.required"></span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="submit" class="btn-primary btn-large btn-save btn pull-right" ng-disabled="teamleadCpaForm.$invalid">
+                  <i class="glyphicon glyphicon-ok"></i> Save</button>              
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <form action="">
+              <div class="table-rate clearfix">
+                <table class="table">
+                  <thead>
+                    <tr><th colspan="2">CPA Менеджер</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="txt-left">Оборот</td>
+                      <td><input name="" id="" type="text" value="0.3"></td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left">Прибыль</td>
+                      <td><input name="" id="" type="text" value="0,05"></td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left"><input type="checkbox" name="" > выполнение ДИ</td>
+                      <td><input name="" id="" type="text" value="-5,0"></td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left">ДЗ отдела <br>(если более 3% от оборота)</td>
+                      <td><input name="" id="" type="text" value="-5,0"></td>
+                    </tr>
+                    <tr><td colspan="2" class="empty">&nbsp;</td></tr>
+                  </tbody>
+                </table>
+                <button class="btn-primary btn-large btn-save btn pull-right" type="submit" name=""><i class="glyphicon glyphicon-ok"></i> Save</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <form action="">
+              <div class="table-rate clearfix">
+                <table class="table">
+                  <thead>
+                    <tr><th colspan="2">Аккаунтер</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="txt-left">Оборот</td>
+                      <td><input name="" id="" type="text" value="0.2"></td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left">Прибыль</td>
+                      <td><input name="" id="" type="text" value="0,05"></td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left"> <input type="checkbox" name="" >выполнение ДИ</td>
+                      <td><input name="" id="" type="text" value="-5,0"></td>
+                    </tr>
+                    <tr>
+                      <td class="txt-left">ДЗ отдела <br>(если более 3% от оборота)</td>
+                      <td><input name="" id="" type="text" value="0,0"></td>
+                    </tr>
+                    <tr><td colspan="2" class="empty">&nbsp;</td></tr>                           
+                  </tbody>
+                </table>
+                <button class="btn-primary btn-large btn-save btn pull-right" type="submit" name=""><i class="glyphicon glyphicon-ok"></i> Save</button>    
+              </div>  
+            </form>
+          </div>
+        </div>
+
+        <hr>
+        
+        <h4>Список сотрудников:</h4> 
+        <table class="table table-bordered all-employees" ng-controller="UserCtrl">
+          <thead>
+            <tr>
+              <th>Должность</th>
+              <th>ФИО</th>
+              <th>План по старым</th>    
+              <th>План по новым</th>                 
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in data">
+              <td class="text-left">{{ item.user.position }}</td>
+              <td class="text-left">{{ item.user.name }}</td>
+              <td>{{ item.stats.metrics.revenue_old.plan}}</td>
+              <td>{{ item.stats.metrics.revenue_new.plan}}</td>                   
+              <td><a ng-click="open()" href="javascript:void(0);">изменить</a></td>          
+            </tr>
+          </tbody>
+        </table>  
+      </uib-tab><!-- /cpa -->
+
+    <uib-tab index="1" heading="CPM">
+      <h4>Процентная ставка:</h4>
+      <div class="row step-bottom">              
+        <div class="col-md-6">
+          <form action="">
+            <div class="table-rate clearfix">
+              <table class="table">   
+                <thead>
+                  <tr><th colspan="2">Тимлид</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="txt-left">оборот по новым рекламодателям отдела</td>
+                    <td><input name="" id="" type="text" value="1.5" required></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">оборот по новым</td>
+                    <td><input name="" id="" type="text" value="3"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">оборот по существующим и переданным в эк.* отдела</td>
+                    <td><input name="" id="" type="text" value="0,1"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">расчет и постановка планов по отделу, проверка мотивации, коучинг</td>
+                    <td><input name="" id="" type="text" value="3,0"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left"><input type="checkbox" name="" > выполнение ДИ отделом</td>
+                    <td><input name="" id="" type="text" value="-5,0"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">ДЗ отдела (если более 3% от оборота)</td>
+                    <td><input name="" id="" type="text" value="-5,0"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">перевыполнение отделом плана</td>
+                    <td><input name="" id="" type="text" value="5,0"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn-primary btn-large btn-save btn pull-right" type="submit" name=""><i class="glyphicon glyphicon-ok"></i> Save</button>    
+            </div>  
+          </form>
+        </div>
+        <div class="col-md-6">
+          <form action="">
+            <div class="table-rate clearfix">
+              <table class="table">
+                <thead>
+                  <tr><th colspan="2">Менеджер</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="txt-left">оборот по новым рекламодателям</td>
+                    <td><input name="" id="" type="text" value="3"></td>
+                  </tr>                     
+                  <tr>
+                    <td class="txt-left">оборот по существующим</td>
+                    <td><input name="" id="" type="text" value="1"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">оборот по переданным в эккаунтинг (от 3 до 6 мес.)</td>
+                    <td><input name="" id="" type="text" value="0,3"></td>
+                  </tr>                       
+                  <tr>
+                    <td class="txt-left"><input type="checkbox" name="" > выполнение ДИ отделом</td>
+                    <td><input name="" id="" type="text" value="-5,0"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">ДЗ отдела (если более 3% от оборота)</td>
+                    <td><input name="" id="" type="text" value="-5,0"></td>
+                  </tr>  
+                  <tr><td colspan="2" class="empty">&nbsp;</td></tr>  
+                  <tr><td colspan="2" class="empty">&nbsp;</td></tr>                      
+                </tbody>
+              </table>
+              <button class="btn-primary btn-large btn-save btn pull-right" type="submit" name=""><i class="glyphicon glyphicon-ok"></i> Save</button>    
+            </div>  
+          </form>
+        </div>
+      </div>
+      <div class="row step-bottom">
+        <div class="col-md-6">
+          <form action="">
+            <div class="table-rate clearfix">
+              <table class="table">
+                <thead>
+                  <tr><th colspan="2">Хантер</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="txt-left">оборот по новым рекламодателям</td>
+                    <td><input name="" id="" type="text" value="3"></td>
+                  </tr>                     
+                  <tr>
+                    <td class="txt-left">оборот по существующим</td>
+                    <td><input name="" id="" type="text" value="1,0"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">оборот по переданным в эккаунтинг (от 3 до 6 мес.)</td>
+                    <td><input name="" id="" type="text" value="0,3"></td>
+                  </tr>                       
+                  <tr>
+                    <td class="txt-left"><input type="checkbox" name="" > выполнение ДИ отделом</td>
+                    <td><input name="" id="" type="text" value="-5,0"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">ДЗ отдела (если более 3% от оборота)</td>
+                    <td><input name="" id="" type="text" value="-5,0"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn-primary btn-large btn-save btn pull-right" type="submit" name=""><i class="glyphicon glyphicon-ok"></i> Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr>
+      <h4>Список сотрудников:</h4>
+      <table class="table table-bordered all-employees">
+        <thead>
+          <tr>
+            <th>Должность</th>
+            <th>ФИО</th>
+            <th>План по старым</th>    
+            <th>План по новым</th>                 
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left">менеджер</td>
+            <td class="text-left">Ален</td>
+            <td>104,251</td>
+            <td>30.000</td>                   
+            <td><a ng-click="open()" href="javascript:void(0);">изменить</a></td>          
+          </tr>                  
+          <tr>
+            <td class="text-left">менеджер</td>
+            <td class="text-left">Даниил</td>
+            <td>66,994</td>
+            <td>20,000</td>
+            <td><a ng-click="open()" href="javascript:void(0);">изменить</a></td>           
+          </tr>                  
+          <tr>
+            <td class="text-left">аккаунтер</td>
+            <td class="text-left"></td>
+            <td></td>
+            <td></td>
+            <td><a ng-click="open()" href="javascript:void(0);">изменить</a></td>        
+          </tr>
+        </tbody>
+      </table>
+    </uib-tab><!-- /cpm -->
+
+    <uib-tab index="2" heading="PUB">
+      <h4>Процентная ставка:</h4> 
+      <div class="row step-bottom">              
+        <div class="col-md-4">
+          <form action="">
+            <div class="table-rate clearfix">
+              <table class="table">   
+                <thead>
+                  <tr><th colspan="2">Тимлид</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="txt-left">прибыль по новым</td>
+                    <td><input name="" id="" type="text" value="3.5"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">прибыль по старым</td>
+                    <td><input name="" id="" type="text" value="2,00"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left"><input type="checkbox" name="" > выполнение ДИ отделом</td>
+                    <td><input name="" id="" type="text" value="-5,0"></td>
+                  </tr>
+                  <tr>
+                    <td class="txt-left">перевыполнение отделом плана</td>
+                    <td><input name="" id="" type="text" value="5,0"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn-primary btn-large btn-save btn pull-right" type="submit" name=""><i class="glyphicon glyphicon-ok"></i> Save</button>    
+            </div>  
+          </form>
+        </div>
+        <div class="col-md-4">
+          <form action="">
+            <div class="table-rate clearfix">
+              <table class="table">   
+                <thead>
+                <tr>
+                  <th colspan="2">Менеджер</th> 
+                </tr>
+              </thead>               
+                    <tbody>
+                      <tr>
+                        <td class="txt-left">прибыль по новым</td>
+                        <td><input name="" id="" type="text" value="3.5"></td>
+                      </tr>
+                      <tr>
+                        <td class="txt-left">прибыль по старым</td>
+                        <td><input name="" id="" type="text" value="2,00"></td>
+                      </tr>
+                      <tr>
+                        <td class="txt-left"><input type="checkbox" name="" > выполнение ДИ</td>
+                        <td><input name="" id="" type="text" value="-5,0"></td>
+                      </tr>
+                       <tr><td colspan="2" class="empty">&nbsp;</td></tr>                      
+                    </tbody>
+                  </table>
+                  <button class="btn-primary btn-large btn-save btn pull-right" type="submit" name=""><i class="glyphicon glyphicon-ok"></i> Save</button>    
+                </div>  
+              </form>
+              </div>
+              <div class="col-md-4">
+                <form action="">
+                  <div class="table-rate clearfix">
+                    <table class="table">   
+                     <thead>
+                      <tr>
+                        <th colspan="2">Аккаунтер</th> 
+                      </tr>
+                    </thead>               
+                    <tbody>                      
+                      <tr>
+                        <td class="txt-left">прибыль по старым</td>
+                        <td><input name="" id="" type="text" value="0,30"></td>
+                      </tr>
+                      <tr>
+                        <td class="txt-left"><input type="checkbox" name="" > выполнение ДИ</td>
+                        <td><input name="" id="" type="text" value="-5,0"></td>
+                      </tr>
+                      <tr><td colspan="2" class="empty">&nbsp;</td></tr> 
+                      <tr><td colspan="2" class="empty">&nbsp;</td></tr>                    
+                    </tbody>
+                  </table>
+                  <button class="btn-primary btn-large btn-save btn pull-right" type="submit" name=""><i class="glyphicon glyphicon-ok"></i> Save</button>    
+                </div>  
+              </form>
+              </div>
+            </div>                            
+              <hr>
+              <h4>Список сотрудников:</h4> 
+              <table class="table table-bordered all-employees">
+                <thead>
+                  <tr>
+                    <th>Должность</th>
+                    <th>ФИО</th>
+                    <th>План по старым</th>    
+                    <th>План по новым</th>                 
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-left">менеджер</td>
+                    <td class="text-left">Ален</td>
+                     <td>104,251</td>
+                    <td>30.000</td>                   
+                    <td><a ng-click="open()" href="javascript:void(0);">изменить</a></td>          
+                  </tr>                  
+                  <tr>
+                    <td class="text-left">менеджер</td>
+                    <td class="text-left">Даниил</td>
+                    <td>66,994</td>
+                    <td>20,000</td>
+                    <td><a ng-click="open()" href="javascript:void(0);">изменить</a></td>           
+                  </tr>                  
+                  <tr>
+                    <td class="text-left">аккаунтер</td>
+                    <td class="text-left"></td>
+                    <td></td>
+                    <td></td>
+                    <td><a ng-click="open()" href="javascript:void(0);">изменить</a></td>        
+                  </tr>
+                </tbody>
+              </table> 
+    </uib-tab><!-- /pub -->
+  </uib-tabset>
+
+   
+  </div>
+</div>

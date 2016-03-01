@@ -1,0 +1,43 @@
+{
+  "settings": [
+    {
+    	"id":1,
+      "plan_by_new": 30000,
+    	"fact_plan_by_new": "28000",
+   		"performance": 93,
+   		"percent": 3.5
+    },
+    {
+    	"id":2,
+      "plan_by_new": 30000,
+    	"fact_plan_by_new": "28000",
+   		"performance": 93,
+   		"percent": 3.5
+    },
+    {
+    	"id":3,
+      "plan_by_new": 30000,
+    	"fact_plan_by_new": "28000",
+   		"performance": 93,
+   		"percent": 3.5
+    },
+    {
+     "plan_by_new": 30000,
+    	"fact_plan_by_new": "28000",
+   		"performance": 93,
+   		"percent": 3.5
+    },
+    {
+      "plan_by_new": 30000,
+    	"fact_plan_by_new": "28000",
+   		"performance": 93,
+   		"percent": 3.5
+    },
+    {
+      "plan_by_new": 30000,
+    	"fact_plan_by_new": "28000",
+   		"performance": 93,
+   		"percent": 3.5
+    }
+  ]
+}

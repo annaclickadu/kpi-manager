@@ -1,0 +1,83 @@
+<div class="table-wrapper">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="first-row">
+          <th colspan="5" class="txt-left"><b> {{ positionMap[user.position] }} отдела {{ departmentMap[user.department] }}, {{ user.name }}</b></th>                
+          <th class="correction">1</th>
+          <th class="correction">0.8</th>
+          <th class="correction">0.6</th>
+          <th class="correction">1.2</th>
+          <th></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>План</th>
+          <th>Факт</th>
+          <th>Выполнение %</th>
+          <th>Бонус расчет</th>
+          <th colspan="4" class="txt-center correction">Корректировка</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody >
+      	<tr ng-repeat-start="item in stats.metrics">
+      		<td class="txt-left">{{item.title}}</td>
+      		<td>{{item.plan}}</td>
+      		<td>{{item.fact}}</td>
+      		<td>
+      			<div class="progress">
+      				<div class="progress-bar" role="progressbar" aria-valuenow="{{item.plan_percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{item.plan_percent}}%;">{{item.plan_percent}}%</div>
+      			</div>
+      		</td>
+      		<td></td>
+      		<td class="correction"></td>
+      		<td class="correction"></td>
+      		<td class="correction"></td>
+      		<td class="correction"></td>
+      		<td></td>
+        </tr>
+        <tr ng-repeat-end>
+      		<td>{{item.fee_percent}}</td>
+      		<td></td>
+      		<td></td>
+      		<td></td>
+      		<td>{{item.fee}}</td>
+      		<td class="correction"><span ng-if="item.correction === 1">{{item.fee_corrected}}</span></td>
+      		<td class="correction"><span ng-if="item.correction === 0.8">{{item.fee_corrected}}</span></td>
+      		<td class="correction"><span ng-if="item.correction === 0.6">{{item.fee_corrected}}</span></td>
+      		<td class="correction"><span ng-if="item.correction === 1.2">{{item.fee_corrected}}</span></td>
+      		<td></td>
+        </tr>
+        <tr>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+            <td class="correction txt-bold">{{ fee.toFixed(2) }}</td>
+            <td class="correction txt-bold">{{ feeCorrection100 }}</td>
+            <td class="correction txt-bold">{{ feeCorrection80 }}</td>
+            <td class="correction txt-bold">{{ feeCorrection60 }}</td>
+            <td class="correction txt-bold">{{ feeCorrection120 }}</td>
+            <td class="correction txt-bold">{{ sum }}</td>
+        </tr>
+        <tr class="not-border">
+	        <td colspan="4"></td>
+	        <td class="correction txt-left">Оклад</td>
+	        <td class="correction"></td>
+	        <td class="correction"></td>
+	        <td class="correction"></td>
+	        <td class="correction"></td>
+	        <td>{{user.salary}}</td>
+        </tr>
+        <tr class="not-border">
+            <td colspan="4"></td>
+            <td class="correction txt-left">Итого к выплате</td>
+            <td class="correction"></td>
+            <td class="correction"></td>
+            <td class="correction"></td>
+            <td class="correction"></td>
+            <td class="txt-color">{{user.salary + sum }}</td>
+        </tr>
+      </tbody>
+    </table>         
+</div>
