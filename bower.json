@@ -1,0 +1,11 @@
+{
+  "name": "ng-boilerplate",
+  "version": "0.0.1",
+  "devDependencies": {
+    "angular": "~1.5",
+        "bootstrap": "~3.3",
+    "angular-bootstrap": "~1",
+    "angular-ui-router": "~0.2"
+  },
+  "dependencies": {}
+}
